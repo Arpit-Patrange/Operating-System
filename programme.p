@@ -27,3 +27,35 @@ int main()
   	
    x= upadate_t-arrival_t[i];
    y=upadate_t-arrival_t[i]-burst_t[i];
+   
+   if(item[i]<=time_quantum && item[i]>0) 
+    { 
+      upadate_t+=item[i]; 
+      item[i]=0; 
+      ident=1;
+    } 
+    else if(item[i]>0) 
+    {                 
+      item[i]-=time_quantum; 
+      upadate_t+=time_quantum; 
+    } 
+    if(item[i]==0 && ident==1) 
+    { 
+      r_p--; 
+      printf("For process :%d\t|\t%d\t|\t%d\n",i+1,x,y); 
+      wait_time+=y; 
+      turnaround_time+=x; 
+      ident=0; 
+    } 
+   if(i==process-1) 
+      i=0;
+    else if(arrival_t[i+1]<=upadate_t) 
+      i++;
+	else
+	  i=0;
+ }
+  printf("\nAverage Waiting Time= %f\n",wait_time*1.0/process); 
+  printf("Average  Turnaround Time = %f",turnaround_time*1.0/process); 
+  
+  return 0; 
+}

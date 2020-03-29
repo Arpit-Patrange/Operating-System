@@ -1,3 +1,4 @@
+
 #include<stdio.h>
  
 int main() 
@@ -26,5 +27,3 @@ int main()
   	
    x= upadate_t-arrival_t[i];
    y=upadate_t-arrival_t[i]-burst_t[i];
- 
-
